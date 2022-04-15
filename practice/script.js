@@ -63,7 +63,7 @@
     return [...new Set(number.split(''))].length !== digit
   }
 
-  const getStrikes = () => {
+  const getStrikes = (number, answer) => {
     // 스트라이크 카운트는 몇개?
     let strike = 0
     const nums = number.split('')
@@ -112,7 +112,7 @@
 
   const playGame = (event) => {
     // 게임 플레이
-    event.prventDefault();
+    event.preventDefault();
 
     if(!!end) {
       return
