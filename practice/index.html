@@ -13,8 +13,16 @@
 
   <body>
     <main>
-      <h1>Baseball</h1>
-      <section></section>
+      <section>
+        <div class="ball_answer">정답은?</div>  
+        <form>
+          <label for="question"></label>
+          <input type="number" id="question" name="question" min="0" max="9999" class="ball_input" /> 
+          <!-- 포인터로 4자리 숫자 이상을 입력할 수 없게 해야함 -->
+          <button>도전</button>
+        </form>
+        <div class="ball_question">결과</div>
+      </section>
     </main>
     <script src="script.js"></script>
   </body>

@@ -1,1 +1,93 @@
-/* No CSS */
+@charset "UTF-8";
+
+* {
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+main::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('./assets/bg.jpg') no-repeat 0 0 / cover;
+  opacity: 0.6;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative; 
+  /* position은 stacking 요소를 해제해 주기 위해서 필요하다. */
+  z-index: 1;
+  /* z-index 를 만들어서 stacking 요소를 재정렬 할 수 있다. */
+  width: calc(100vw - 20px);
+  /* 등호간 띄어쓰기 해줘야 함 */
+  height: 100vh;
+}
+
+.ball_answer {
+  text-align: center;
+  width: 180px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 18px;
+}
+
+.ball_question {
+  margin-top: 30px;
+  padding: 30px;
+  font-size: 20px;
+  background: #333;
+  text-align: center;
+  color: #fff;
+}
+
+.ball_quesion span {
+  display: block;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.ball_question span em {
+  font-style: normal;
+}
+
+form {
+  display: flex;
+  margin-top: 30px;
+}
+
+form .ball_input {
+  width: 100px;
+  height: 30px;
+  border: 1px solid #ccc; 
+}
+
+form button {
+  background: #333;
+  border: none;
+  width: 70px;
+  height: 30px;
+  margin-left: 10px;
+  padding: 0 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+form button:hover, form button:active, form button:focus {
+  opacity: 0.8;
+}
