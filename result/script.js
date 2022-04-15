@@ -17,23 +17,17 @@
     end: false,
     $question: get('.ball_question'),
     $answer: get('.ball_answer'),
-    $input: get('.ball_input')
+    $input: get('.ball_input'),
   }
 
-  const {limit, digit, $question, $answer, $input} = baseball
-  // destructure 을 통해 객체를 미리 선언할 수 있다.
-  let {trial, end} = baseball
-  // const는 재할당이 불가능 하기 때문에
-  // 중간에 자주 바뀌는 변수는 let으로 선언
+  const { limit, digit, $question, $answer, $input } = baseball
+  let { trial, end } = baseball
 
   const setPassword = () => {
-    // 패스워드를 지정해 줍니다.
     const gameLimit = Array(limit).fill(false)
     let password = ''
     while (password.length < digit) {
       const random = parseInt(Math.random() * 10, 10)
-      // radix 를 지정해줘야 10진수로 변환이 됨.
-      // parseInt는 기본적으로 10진수가 아니다.
 
       if (gameLimit[random]) {
         continue
@@ -41,30 +35,23 @@
       password += random
       gameLimit[random] = true
     }
+
     baseball.password = password
   }
 
   const onPlayed = (number, hint) => {
-    // 시도를 했을 때
-    // number : 내가 입력한 숫자
-    // hint : 현재 어떤 상황?
     return `<em>${trial}차 시도</em>: ${number}, ${hint}`
   }
 
-  
-
   const isCorrect = (number, answer) => {
-    // 번호가 같은가? 
     return number === answer
   }
 
   const isDuplicate = (number) => {
-    // 중복번호가 있는가? 
     return [...new Set(number.split(''))].length !== digit
   }
 
-  const getStrikes = () => {
-    // 스트라이크 카운트는 몇개?
+  const getStrikes = (number, answer) => {
     let strike = 0
     const nums = number.split('')
 
@@ -78,7 +65,6 @@
   }
 
   const getBalls = (number, answer) => {
-    // 볼 카운트는 몇개?
     let ball = 0
     const nums = number.split('')
     const gameLimit = Array(limit).fill(false)
@@ -97,7 +83,6 @@
   }
 
   const getResult = (number, answer) => {
-    // 시도에 따른 결과는?
     if (isCorrect(number, answer)) {
       end = true
       $answer.innerHTML = baseball.password
@@ -111,10 +96,9 @@
   }
 
   const playGame = (event) => {
-    // 게임 플레이
-    event.prventDefault();
+    event.preventDefault()
 
-    if(!!end) {
+    if (!!end) {
       return
     }
 
@@ -127,18 +111,19 @@
       alert('중복 숫자가 있습니다.')
     } else {
       trial++
-      const result = onPlayed(inputNumber, getResult (inputNumber, password))
+      const result = onPlayed(inputNumber, getResult(inputNumber, password))
       $question.innerHTML += `<span>${result}</span>`
 
-      if (limit <= trial && !isCorrect (inputNumber, password)) {
+      if (limit <= trial && !isCorrect(inputNumber, password)) {
         alert('쓰리아웃!')
         end = true
         $answer.innerHTML = password
       }
     }
+
     $input.value = ''
     $input.focus()
   }
 
-  init();
+  init()
 })()

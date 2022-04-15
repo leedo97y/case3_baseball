@@ -1,5 +1,4 @@
-@charset "UTF-8";
-
+@charset "utf-8";
 
 main {
   display: flex;
@@ -17,7 +16,7 @@ main::before {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url(./assets/bg.jpg) no-repeat 0 0 / cover;
+  background: url(./assets/bg.jpg) no-repeat 0 0/cover;
   opacity: 0.6;
 }
 
@@ -33,12 +32,9 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative; 
-  /* position은 stacking 요소를 해제해 주기 위해서 필요하다. */
+  position: relative;
   z-index: 1;
-  /* z-index 를 만들어서 stacking 요소를 재정렬 할 수 있다. */
   width: calc(100vw - 20px);
-  /* 등호간 띄어쓰기 해줘야 함 */
   height: 100vh;
 }
 
@@ -53,9 +49,9 @@ section {
 
 .ball_question {
   margin-top: 30px;
-  padding: 30px;
   font-size: 20px;
   background: #333;
+  padding: 30px;
   text-align: center;
   color: #fff;
 }
@@ -78,7 +74,7 @@ form {
 form .ball_input {
   width: 100px;
   height: 30px;
-  border: 1px solid #ccc; 
+  border: 1px solid #ccc;
 }
 
 form button {
